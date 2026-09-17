@@ -1,0 +1,78 @@
+# Password Strength Analyzer – My Notes
+Thiranex Internship Task
+Date: 17 September 2026
+
+## 1. What this task is asking me to do
+- Build a tool that evaluates password strength
+- Check length, complexity, and uniqueness
+- Suggest stronger passwords (optional but good)
+- Optional: prevent reuse of old passwords
+- Learn basic password security concepts
+
+## 2. Video I watched
+Link: https://www.youtube.com/watch?v=h3hlku6EhFI
+Title: Build a Python Password Checker (Vinsloev Academy)
+
+What the video taught:
+- Measure password length
+- Calculate entropy (how unpredictable the password is)
+- Give points for lowercase, uppercase, digits, and symbols
+- Check against a list of common passwords
+- Give a final verdict: Weak / Moderate / Strong / Very Strong
+
+## 3. Key ideas I understood (Password Security + Basic Cryptography)
+
+### Password Security Concepts
+- **Length**: Longer passwords are much harder to guess or brute-force.
+- **Complexity**: Using a mix of uppercase, lowercase, numbers, and symbols increases the number of possible combinations.
+- **Uniqueness**: Common passwords (like "admin" or "password") are easy for attackers to try first. They should always be rejected.
+- **Reuse**: Using the same password in multiple places is dangerous. If one account is leaked, others become vulnerable.
+
+### Basic Cryptography Concepts related to this task
+- **Entropy**:  
+  Entropy measures how unpredictable a password is.  
+  Higher entropy means the password is harder to crack.  
+  We calculate it roughly as:  
+  Entropy = Length × log2(character pool size)
+
+- **Brute-force attacks**:  
+  An attacker tries every possible combination until they find the correct password.  
+  Longer passwords with higher entropy take much longer to crack.
+
+- **Dictionary / Common password attacks**:  
+  Attackers first try lists of commonly used passwords.  
+  That is why we check against a common password list.
+
+- **Password strength checking vs Password storage**:  
+  This tool only *checks* strength.  
+  In real systems, passwords should never be stored in plain text.  
+  They should be stored using cryptographic hashing (one-way transformation).
+
+### What this tool does
+- Measures length, complexity, entropy, and uniqueness
+- Gives a strength verdict
+- Optionally prevents password reuse using a local history file## 4. Final code features
+- Length check
+- Complexity check
+- Entropy calculation
+- Common password detection
+- Score and verdict
+- Optional password history (reuse prevention)
+
+## 5. Test results
+| Password I tried | Length | Entropy (approx) | Verdict     | Notes                          |
+|------------------|--------|------------------|-------------|--------------------------------|
+| admin            | 5      | 23.5             | Weak        | Common password                |
+| Hello1!          | 7      | 45.88            | Moderate    | Has all character types        |
+| password         | 8      | -                | Weak        | Common password                |
+
+## 6. What I learned (Expected Outcome)
+- I learned why password length and character variety are important for security
+- I understood the basic idea of entropy as a measure of unpredictability
+- I learned that common passwords are weak even if they look complex
+- I understood the danger of password reuse
+- I learned the difference between checking password strength and safely storing passwords (hashing)
+- These are basic but important cryptography and password security concepts
+## 7. Questions / things that confused me
+- At first I was confused about the optional reuse feature.
+- I thought it needed JavaScript, but it is actually done in pure Python using a simple JSON file to store previous passwords.
